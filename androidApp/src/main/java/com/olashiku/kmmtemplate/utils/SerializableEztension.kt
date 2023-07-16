@@ -6,7 +6,7 @@ import kotlinx.serialization.json.Json
 
 
 inline fun <reified T : Any> T.toJson(): String {
-    return Json.encodeToString(this)
+    return Json.encodeToString(this.toString())
 }
 
 inline fun <reified T : Any> String.fromJson(): T {

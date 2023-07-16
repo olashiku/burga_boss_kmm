@@ -3,65 +3,57 @@ package com.olashiku.kmmtemplate.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.sourceInformation
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.olashiku.kmmtemplate.model.response.login.LoginResponse
-import com.olashiku.kmmtemplate.utils.fromJson
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.olashiku.kmmtemplate.android.views.IntroScreen.IntroScreen
+import com.olashiku.kmmtemplate.android.resource.Strings
+import com.olashiku.kmmtemplate.android.views.DashboardScreen.DashboardScreen
+import com.olashiku.kmmtemplate.android.views.LoginScreen.LoginScreen
+import com.olashiku.kmmtemplate.android.views.SignupScreen
+import com.olashiku.kmmtemplate.android.views.SplashScreen.SplashScreen
+import com.olashiku.kmmtemplate.model.request.profile.GetUserProfileRequest
+import com.olashiku.kmmtemplate.model.request.register.RegisterRequest
 import com.olashiku.kmmtemplate.viewModel.AuthenticationViewModel
+import com.olashiku.kmmtemplate.viewModel.UserViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
 
-    val authViewModel: AuthenticationViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        authViewModel.loginUser()
+
+
         setContent {
             MyApplicationTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    App(authViewModel)
+                val navController = rememberNavController()
+
+                NavHost(navController = navController, startDestination = "SplashScreen") {
+                    composable(Strings.splashScreen){
+                        SplashScreen(navController = navController)
+                    }
+                    composable(Strings.introScreen){
+                        IntroScreen(navController = navController)
+                    }
+                    composable(Strings.loginScreen){
+                        LoginScreen(navController = navController)
+                    }
+                    composable(Strings.registrationScreen){
+                        SignupScreen(navController = navController)
+                    }
+                    composable(Strings.dashboardScreen){
+                        DashboardScreen(navController = navController)
+                    }
+
                 }
+
             }
         }
     }
-
-}
-
-@Composable
-fun App(authenticationViewModel: AuthenticationViewModel) {
-    val state by authenticationViewModel.state.collectAsState()
-    if(state.loginResponse.isNotEmpty()){
-        val loginResponse = state.loginResponse.fromJson<LoginResponse>()
-        GreetingView(loginResponse.responsemessage)
-    }
-         val message = state.loadingState
-         GreetingView(message.toString())
-
-}
-
-@Composable
-fun GreetingView(text: String) {
-    Text(text = text)
 }
 
 
 
-@Preview
-@Composable
-fun DefaultPreview() {
-    MyApplicationTheme {
-        GreetingView("Hello, Android!")
-    }
-}
+
