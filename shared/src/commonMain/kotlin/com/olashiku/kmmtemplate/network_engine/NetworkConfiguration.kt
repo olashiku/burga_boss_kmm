@@ -11,6 +11,7 @@ import kotlinx.serialization.json.Json
 
 
 class NetworkConfiguration {
+
     val client=httpClient {
         install(Logging){
             logger = Logger.DEFAULT

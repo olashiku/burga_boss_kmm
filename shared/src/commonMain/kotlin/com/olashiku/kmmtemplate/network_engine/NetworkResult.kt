@@ -7,3 +7,5 @@ sealed class NetworkResult<out T:Any> {
     class Failed<out T:Any> (val message:T): NetworkResult<Nothing>()
     class SuccessSocketConnection<out T:Any> ( message:T): NetworkResult<Nothing>()
 }
+
+

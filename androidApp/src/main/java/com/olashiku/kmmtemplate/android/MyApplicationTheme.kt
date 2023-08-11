@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.olashiku.kmmtemplate.android.resource.Colors
 
 @Composable
 fun MyApplicationTheme(
@@ -28,9 +29,9 @@ fun MyApplicationTheme(
         )
     } else {
         lightColors(
-            primary = Color(0xFF6200EE),
+            primary = Color(Colors.brownColor),
             primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
+            secondary = Color(Colors.brownColor)
         )
     }
     val typography = Typography(

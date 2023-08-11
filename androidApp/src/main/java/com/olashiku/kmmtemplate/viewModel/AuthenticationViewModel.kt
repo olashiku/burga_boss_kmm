@@ -23,8 +23,7 @@ class AuthenticationViewModel(
 
 
     fun registerUser(){
-        val request = RegisterRequest("",
-            "","","","","")
+        val request = RegisterRequest("", "","","","","")
        makePostRequest(request, authenticationRepository::register)
     }
 
