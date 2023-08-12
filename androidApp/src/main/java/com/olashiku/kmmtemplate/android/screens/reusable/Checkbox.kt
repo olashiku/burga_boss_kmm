@@ -1,4 +1,4 @@
-package com.olashiku.kmmtemplate.android.views.Reusables
+package com.olashiku.kmmtemplate.android.screens.reusable
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer

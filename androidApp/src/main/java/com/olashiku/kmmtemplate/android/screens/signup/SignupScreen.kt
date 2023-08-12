@@ -1,7 +1,9 @@
-package com.olashiku.kmmtemplate.android.views.SignupScreen
+package com.olashiku.kmmtemplate.android.screens.signup
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
@@ -26,7 +27,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -34,11 +34,11 @@ import com.olashiku.kmmtemplate.android.R
 import com.olashiku.kmmtemplate.android.resource.Colors
 import com.olashiku.kmmtemplate.android.resource.Fonts
 import com.olashiku.kmmtemplate.android.resource.Strings
-import com.olashiku.kmmtemplate.android.views.Reusables.EditText
-import com.olashiku.kmmtemplate.android.views.Reusables.SolidButton
-import com.olashiku.kmmtemplate.android.views.Reusables.TransparentButtonWithAnnotation
-import com.olashiku.kmmtemplate.android.views.Reusables.TransparentButtonWithIcon
-import com.olashiku.kmmtemplate.android.views.Reusables.spannableString
+import com.olashiku.kmmtemplate.android.screens.reusable.EditText
+import com.olashiku.kmmtemplate.android.screens.reusable.SolidButton
+import com.olashiku.kmmtemplate.android.screens.reusable.TransparentButtonWithAnnotation
+import com.olashiku.kmmtemplate.android.screens.reusable.TransparentButtonWithIcon
+import com.olashiku.kmmtemplate.android.screens.reusable.spannableString
 
 @Composable
 fun SignupScreen(navController: NavController) {
@@ -51,7 +51,11 @@ fun SignupScreen(navController: NavController) {
     val confirmPasswordState = remember { mutableStateOf("") }
 
 
-    Column(Modifier.background(color = Color(Colors.whiteColor)).verticalScroll(rememberScrollState())) {
+    Column(
+        Modifier
+            .background(color = Color(Colors.whiteColor))
+            .verticalScroll(ScrollState(0))
+    ) {
         TopSection(navController)
         MiddleSection(
             firstNameState = firstNameState,
@@ -108,7 +112,8 @@ fun MiddleSection(
         Surface(
             modifier = modifier
                 .fillMaxWidth()
-                .padding(0.dp, 17.dp, 0.dp, 0.dp),
+                .padding(0.dp, 17.dp, 0.dp, 0.dp)
+                .clickable { },
             shape = RectangleShape,
             color = Color(Colors.googleBlue)
         ) {
@@ -157,9 +162,11 @@ fun MiddleSection(
         }
 
 
-        Row(modifier = modifier
-            .padding(top = 20.dp)
-            .fillMaxWidth()) {
+        Row(
+            modifier = modifier
+                .padding(top = 20.dp)
+                .fillMaxWidth()
+        ) {
             EditText(
                 modifier = modifier
                     .weight(1f)
@@ -181,53 +188,53 @@ fun MiddleSection(
             )
         }
 
+        EditText(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp),
+            textState = emailState,
+            label = Strings.emailText,
+            isEnabled = true,
+            isSingleLine = false
+        )
 
-            EditText(
-                modifier = modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp),
-                textState = emailState,
-                label = Strings.emailText,
-                isEnabled = true,
-                isSingleLine = false
-            )
+        EditText(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp),
+            textState = phoneState,
+            label = Strings.phoneText,
+            isEnabled = true,
+            isSingleLine = false
+        )
 
-            EditText(
-                modifier = modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp),
-                textState = phoneState,
-                label = Strings.phoneText,
-                isEnabled = true,
-                isSingleLine = false
-            )
+        EditText(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp),
+            textState = passwordState,
+            label = Strings.passwordText,
+            isEnabled = true,
+            isSingleLine = false
+        )
 
-            EditText(
-                modifier = modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp),
-                textState = passwordState,
-                label = Strings.passwordText,
-                isEnabled = true,
-                isSingleLine = false
-            )
-
-            EditText(
-                modifier = modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp),
-                textState = reEnterPasswordState,
-                label = Strings.confirmPasswordText,
-                isEnabled = true,
-                isSingleLine = false
-            )
+        EditText(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp),
+            textState = reEnterPasswordState,
+            label = Strings.confirmPasswordText,
+            isEnabled = true,
+            isSingleLine = false
+        )
     }
 }
 
 @Composable
 fun BottomSection(
     navController: NavController,
-    modifier: Modifier = Modifier) {
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier
             .padding(10.dp)
@@ -236,13 +243,13 @@ fun BottomSection(
     ) {
 
         SolidButton(text = Strings.signupText, action = {
-            navController.navigate(Strings.dashboardScreen)
+            navController.navigate(Strings.otpScreen)
         })
 
         TransparentButtonWithAnnotation(
             text = spannableString(Strings.haveAccountLogin, Strings.loginText),
             action = {
-                navController.navigate(Strings.registrationScreen)
+                navController.navigate(Strings.loginScreen)
             }, modifier = modifier
                 .padding(0.dp, 24.dp, 0.dp, 0.dp)
                 .fillMaxWidth()

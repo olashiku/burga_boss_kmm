@@ -1,16 +1,14 @@
-package com.olashiku.kmmtemplate.android.views.IntroScreen
+package com.olashiku.kmmtemplate.android.screens.intro
 
-import android.widget.HorizontalScrollView
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -25,7 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -33,16 +30,16 @@ import com.olashiku.kmmtemplate.android.R
 import com.olashiku.kmmtemplate.android.resource.Colors
 import com.olashiku.kmmtemplate.android.resource.Fonts
 import com.olashiku.kmmtemplate.android.resource.Strings
-import com.olashiku.kmmtemplate.android.views.Reusables.LightButton
-import com.olashiku.kmmtemplate.android.views.Reusables.SolidButton
-import com.olashiku.kmmtemplate.android.views.Reusables.TransparentButton
+import com.olashiku.kmmtemplate.android.screens.reusable.LightButton
+import com.olashiku.kmmtemplate.android.screens.reusable.SolidButton
+import com.olashiku.kmmtemplate.android.screens.reusable.TransparentButton
 import com.olashiku.kmmtemplate.viewModel.UserViewModel
 import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
 fun IntroScreen(navController: NavController ) {
-    Surface(modifier = Modifier.fillMaxSize() .verticalScroll(rememberScrollState())) {
+    Surface(modifier = Modifier.fillMaxSize().verticalScroll(ScrollState(0))) {
         Column {
             CreateTopSection()
             Spacer(modifier = Modifier.weight(1f))
@@ -85,11 +82,6 @@ fun CreateTopSection(modifier: Modifier = Modifier) {
 @Composable
 fun BottomSection(navController: NavController, modifier: Modifier = Modifier,userViewModel: UserViewModel = koinViewModel()) {
 
-
-    LaunchedEffect(key1 = userViewModel.registerUserState) {
-        userViewModel.registerUser("123456789")
-    }
-
     Column(modifier.padding(20.dp, 30.dp, 20.dp, 0.dp)) {
         SolidButton(text = Strings.loginText, action = {
             navController.navigate(Strings.loginScreen)
@@ -126,7 +118,11 @@ fun BottomSection(navController: NavController, modifier: Modifier = Modifier,us
 
         TransparentButton(
             text = Strings.exploreText, action = {
-                navController.navigate(Strings.dashboardScreen)
+                navController.navigate(Strings.dashboardScreen){
+                    popUpTo(Strings.introScreen) {
+                        inclusive = true
+                    }
+                }
             }, modifier = modifier
                 .padding(0.dp, 24.dp, 0.dp, 24.dp)
                 .fillMaxWidth()

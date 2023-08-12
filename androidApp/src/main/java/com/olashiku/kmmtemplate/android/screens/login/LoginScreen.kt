@@ -1,6 +1,7 @@
-package com.olashiku.kmmtemplate.android.views.LoginScreen
+package com.olashiku.kmmtemplate.android.screens.login
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -9,7 +10,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -36,13 +36,13 @@ import com.olashiku.kmmtemplate.android.R
 import com.olashiku.kmmtemplate.android.resource.Colors
 import com.olashiku.kmmtemplate.android.resource.Fonts
 import com.olashiku.kmmtemplate.android.resource.Strings
-import com.olashiku.kmmtemplate.android.views.Reusables.CheckBoxView
-import com.olashiku.kmmtemplate.android.views.Reusables.EditText
-import com.olashiku.kmmtemplate.android.views.Reusables.EditTextPassword
-import com.olashiku.kmmtemplate.android.views.Reusables.SolidButton
-import com.olashiku.kmmtemplate.android.views.Reusables.TransparentButtonSmallSize
-import com.olashiku.kmmtemplate.android.views.Reusables.TransparentButtonWithAnnotation
-import com.olashiku.kmmtemplate.android.views.Reusables.spannableString
+import com.olashiku.kmmtemplate.android.screens.reusable.CheckBoxView
+import com.olashiku.kmmtemplate.android.screens.reusable.EditText
+import com.olashiku.kmmtemplate.android.screens.reusable.EditTextPassword
+import com.olashiku.kmmtemplate.android.screens.reusable.SolidButton
+import com.olashiku.kmmtemplate.android.screens.reusable.TransparentButtonSmallSize
+import com.olashiku.kmmtemplate.android.screens.reusable.TransparentButtonWithAnnotation
+import com.olashiku.kmmtemplate.android.screens.reusable.spannableString
 
 @Composable
 fun LoginScreen(navController: NavController) {
@@ -52,7 +52,7 @@ fun LoginScreen(navController: NavController) {
 
 
     Column(modifier = Modifier
-        .background(color = Color(Colors.whiteColor)).verticalScroll(rememberScrollState())
+        .background(color = Color(Colors.whiteColor)).verticalScroll(ScrollState(0))
        ) {
         TopSection()
         MiddleSection(usernameState = usernameState, passwordState = passwordState)
@@ -187,7 +187,7 @@ fun BottomSection(
 
         SolidButton(text = Strings.loginText, action = {
            navController.navigate(Strings.dashboardScreen)
-        })
+        }, modifier = modifier.padding(top = 60.dp))
 
         TransparentButtonWithAnnotation(
             text = spannableString(Strings.noAccountTextOne, Strings.noAccountTextTwo),

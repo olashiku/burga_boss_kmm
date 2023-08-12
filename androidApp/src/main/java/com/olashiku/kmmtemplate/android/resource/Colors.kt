@@ -14,4 +14,5 @@ object Colors {
     const val rememberMeTextColor = 0xFF667085
     const val editTextColor = 0xFFF9FAFB
     const val edittextLineColor = 0xFFF2F4F7
+    const val verificationTextColor = 0xFF475467
 }

@@ -1,5 +1,7 @@
 package com.olashiku.kmmtemplate.android.resource
 
+import com.olashiku.kmmtemplate.android.screens.navigation.BottomNavigationScreens
+
 object Strings {
 
     /** text resource*/
@@ -20,14 +22,21 @@ object Strings {
 
     const val noAccountTextTwo = " Sign Up"
 
-    /** registeration resource*/
+    /** registration resource*/
     const val firstNameText = "Enter your first name"
     const val lastNameText = "Enter your last name"
     const val emailText = "Enter your email "
     const val phoneText = "Enter your phone number"
     const val confirmPasswordText = "Confirm your password"
 
+     /**Otp  Screen Resource*/
+    const val verificationTitle = "Verification"
+    const val verificationBody = "Enter the OTP that was sent to your email/phone number "
+    const val proceed = "Proceed"
 
+    /**Success  Screen Resource*/
+    const val successTitle = "Sign Up Successful"
+    const val successBody = "You have successfully signed up to Burger Boss. Dive into placing your orders."
 
     /** route resource*/
     const val splashScreen = "SplashScreen"
@@ -35,7 +44,22 @@ object Strings {
     const val loginScreen = "LoginScreen"
     const val registrationScreen = "RegistrationScreen"
     const val dashboardScreen  = "DashboardScreen"
+    const val otpScreen = "otpScreen"
     const val verificationScreen = "VerificationScreen"
     const val successScreen = "SuccessScreen"
+
+    /**menu route resource*/
+    const val menuScreen = "MenuScreen"
+    const val myOrderScreen = "MyOrderScreen"
+    const val myFavoriteScreen = "MyFavoriteScreen"
+    const val myProfileScreen = "MyProfileScreen"
+
+
+    /**menu text resource*/
+    const val menu = "Menu"
+    const val order = "My Order"
+    const val favorite = "My Favorite"
+    const val profile = "My Profile"
+
 
 }
