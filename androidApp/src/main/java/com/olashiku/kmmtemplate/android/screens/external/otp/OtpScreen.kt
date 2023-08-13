@@ -1,4 +1,4 @@
-package com.olashiku.kmmtemplate.android.screens.otp
+package com.olashiku.kmmtemplate.android.screens.external.otp
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -25,9 +25,9 @@ import com.olashiku.kmmtemplate.android.R
 import com.olashiku.kmmtemplate.android.resource.Colors
 import com.olashiku.kmmtemplate.android.resource.Fonts
 import com.olashiku.kmmtemplate.android.resource.Strings
-import com.olashiku.kmmtemplate.android.screens.reusable.Otp
-import com.olashiku.kmmtemplate.android.screens.reusable.SolidButton
-import com.olashiku.kmmtemplate.android.screens.reusable.TransparentButtonWithIcon
+import com.olashiku.kmmtemplate.android.screens.external.reusable.Otp
+import com.olashiku.kmmtemplate.android.screens.external.reusable.SolidButton
+import com.olashiku.kmmtemplate.android.screens.external.reusable.TransparentButtonWithIcon
 
 
 @Composable
@@ -111,7 +111,7 @@ fun BottomSection(
     modifier: Modifier = Modifier) {
     Column(
         modifier
-            .padding(start = 10.dp,end = 10.dp, bottom = 80.dp)
+            .padding(start = 10.dp,end = 10.dp, bottom = 30.dp)
             .fillMaxSize()
             .background(color = Color(Colors.whiteColor)),
         verticalArrangement = Arrangement.Bottom,

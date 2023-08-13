@@ -1,8 +1,7 @@
 package com.olashiku.kmmtemplate.android.resource
 
-import android.graphics.Color
-
 object Colors {
+    const val backgroundColor = 0xFFFFFDFB
     const val brownColor = 0xFF7E3C26
     const val lightBrownColor = 0x0A7E3C26
     const val whiteColor = 0xFFFCFCFD
@@ -13,6 +12,8 @@ object Colors {
     const val googleBlue = 0xFF346EF1
     const val rememberMeTextColor = 0xFF667085
     const val editTextColor = 0xFFF9FAFB
-    const val edittextLineColor = 0xFFF2F4F7
+    const val lineColor = 0xFFF2F4F7
     const val verificationTextColor = 0xFF475467
+    const val menuTopTextColor = 0xFF757575
+    const val tabBackgroundColor = 0xFFFDF6ED
 }

@@ -1,4 +1,4 @@
-package com.olashiku.kmmtemplate.android.screens.login
+package com.olashiku.kmmtemplate.android.screens.external.login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
@@ -7,13 +7,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
 import androidx.compose.material.Surface
@@ -36,13 +36,13 @@ import com.olashiku.kmmtemplate.android.R
 import com.olashiku.kmmtemplate.android.resource.Colors
 import com.olashiku.kmmtemplate.android.resource.Fonts
 import com.olashiku.kmmtemplate.android.resource.Strings
-import com.olashiku.kmmtemplate.android.screens.reusable.CheckBoxView
-import com.olashiku.kmmtemplate.android.screens.reusable.EditText
-import com.olashiku.kmmtemplate.android.screens.reusable.EditTextPassword
-import com.olashiku.kmmtemplate.android.screens.reusable.SolidButton
-import com.olashiku.kmmtemplate.android.screens.reusable.TransparentButtonSmallSize
-import com.olashiku.kmmtemplate.android.screens.reusable.TransparentButtonWithAnnotation
-import com.olashiku.kmmtemplate.android.screens.reusable.spannableString
+import com.olashiku.kmmtemplate.android.screens.external.reusable.CheckBoxView
+import com.olashiku.kmmtemplate.android.screens.external.reusable.EditText
+import com.olashiku.kmmtemplate.android.screens.external.reusable.EditTextPassword
+import com.olashiku.kmmtemplate.android.screens.external.reusable.SolidButton
+import com.olashiku.kmmtemplate.android.screens.external.reusable.TransparentButtonSmallSize
+import com.olashiku.kmmtemplate.android.screens.external.reusable.TransparentButtonWithAnnotation
+import com.olashiku.kmmtemplate.android.screens.external.reusable.spannableString
 
 @Composable
 fun LoginScreen(navController: NavController) {
@@ -50,15 +50,18 @@ fun LoginScreen(navController: NavController) {
     val usernameState = remember { mutableStateOf("") }
     val passwordState = remember { mutableStateOf("") }
 
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = Color(Colors.whiteColor)).verticalScroll(ScrollState(0))
+                .height(IntrinsicSize.Max)
+        ) {
+            TopSection()
+            MiddleSection(usernameState = usernameState, passwordState = passwordState)
+            Spacer(modifier = Modifier.weight(1f))
+            BottomSection(navController)
+        }
 
-    Column(modifier = Modifier
-        .background(color = Color(Colors.whiteColor)).verticalScroll(ScrollState(0))
-       ) {
-        TopSection()
-        MiddleSection(usernameState = usernameState, passwordState = passwordState)
-        Spacer(modifier = Modifier.weight(1f))
-        BottomSection(navController)
-    }
 }
 
 @Composable
@@ -180,13 +183,12 @@ fun BottomSection(
     Column(
         modifier
             .padding(10.dp)
-            .fillMaxWidth()
-            .fillMaxHeight()
+            .fillMaxSize()
             .background(color = Color(Colors.whiteColor))
     ) {
 
         SolidButton(text = Strings.loginText, action = {
-           navController.navigate(Strings.dashboardScreen)
+           navController.navigate(Strings.insideRoot)
         }, modifier = modifier.padding(top = 60.dp))
 
         TransparentButtonWithAnnotation(

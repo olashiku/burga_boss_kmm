@@ -1,4 +1,4 @@
-package com.olashiku.kmmtemplate.android.screens.signup
+package com.olashiku.kmmtemplate.android.screens.external.signup
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
 import androidx.compose.material.Surface
@@ -34,11 +33,11 @@ import com.olashiku.kmmtemplate.android.R
 import com.olashiku.kmmtemplate.android.resource.Colors
 import com.olashiku.kmmtemplate.android.resource.Fonts
 import com.olashiku.kmmtemplate.android.resource.Strings
-import com.olashiku.kmmtemplate.android.screens.reusable.EditText
-import com.olashiku.kmmtemplate.android.screens.reusable.SolidButton
-import com.olashiku.kmmtemplate.android.screens.reusable.TransparentButtonWithAnnotation
-import com.olashiku.kmmtemplate.android.screens.reusable.TransparentButtonWithIcon
-import com.olashiku.kmmtemplate.android.screens.reusable.spannableString
+import com.olashiku.kmmtemplate.android.screens.external.reusable.EditText
+import com.olashiku.kmmtemplate.android.screens.external.reusable.SolidButton
+import com.olashiku.kmmtemplate.android.screens.external.reusable.TransparentButtonWithAnnotation
+import com.olashiku.kmmtemplate.android.screens.external.reusable.TransparentButtonWithIcon
+import com.olashiku.kmmtemplate.android.screens.external.reusable.spannableString
 
 @Composable
 fun SignupScreen(navController: NavController) {
@@ -53,6 +52,7 @@ fun SignupScreen(navController: NavController) {
 
     Column(
         Modifier
+            .fillMaxSize()
             .background(color = Color(Colors.whiteColor))
             .verticalScroll(ScrollState(0))
     ) {

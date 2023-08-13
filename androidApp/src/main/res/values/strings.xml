@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BurgaBoss</string>
+    <string name="greeting_text">Hi %s 👋</string>
+    <string name="what_your_order">What would you like to order?</string>
 </resources>

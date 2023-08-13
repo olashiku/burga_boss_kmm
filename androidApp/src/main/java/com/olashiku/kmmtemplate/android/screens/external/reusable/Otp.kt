@@ -1,4 +1,4 @@
-package com.olashiku.kmmtemplate.android.screens.reusable
+package com.olashiku.kmmtemplate.android.screens.external.reusable
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

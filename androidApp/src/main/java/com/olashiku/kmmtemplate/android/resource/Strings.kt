@@ -1,7 +1,5 @@
 package com.olashiku.kmmtemplate.android.resource
 
-import com.olashiku.kmmtemplate.android.screens.navigation.BottomNavigationScreens
-
 object Strings {
 
     /** text resource*/
@@ -21,6 +19,9 @@ object Strings {
     const val haveAccountLogin = "Already have an account?"
 
     const val noAccountTextTwo = " Sign Up"
+
+    const val outsideRoot = "outsideRoot"
+    const val insideRoot = "insideRoot"
 
     /** registration resource*/
     const val firstNameText = "Enter your first name"

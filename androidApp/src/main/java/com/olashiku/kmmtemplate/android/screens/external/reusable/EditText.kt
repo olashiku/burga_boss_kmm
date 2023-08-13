@@ -1,4 +1,4 @@
-package com.olashiku.kmmtemplate.android.screens.reusable
+package com.olashiku.kmmtemplate.android.screens.external.reusable
 
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -52,7 +52,7 @@ fun EditText(
         textStyle = Fonts.Typography.body1,
         colors = TextFieldDefaults.outlinedTextFieldColors(
             backgroundColor = Color(Colors.editTextColor),
-            unfocusedBorderColor = Color(Colors.edittextLineColor),
+            unfocusedBorderColor = Color(Colors.lineColor),
             focusedBorderColor = Color(Colors.lightBrownColor)
 
         )
@@ -94,7 +94,7 @@ fun EditTextPassword(
         textStyle = Fonts.Typography.body1,
         colors = TextFieldDefaults.outlinedTextFieldColors(
             backgroundColor = Color(Colors.editTextColor),
-            unfocusedBorderColor = Color(Colors.edittextLineColor),
+            unfocusedBorderColor = Color(Colors.lineColor),
             focusedBorderColor = Color(Colors.lightBrownColor)
 
         ),

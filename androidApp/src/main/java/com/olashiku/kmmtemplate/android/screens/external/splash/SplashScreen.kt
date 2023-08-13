@@ -1,4 +1,4 @@
-package com.olashiku.kmmtemplate.android.screens.splash
+package com.olashiku.kmmtemplate.android.screens.external.splash
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box

@@ -1,5 +1,6 @@
-package com.olashiku.kmmtemplate.android.screens.dashboard
+package com.olashiku.kmmtemplate.android.screens.internal.dashboard
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -20,17 +21,20 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.olashiku.kmmtemplate.android.resource.Colors
 import com.olashiku.kmmtemplate.android.resource.Fonts
 import com.olashiku.kmmtemplate.android.resource.Strings
-import com.olashiku.kmmtemplate.android.screens.menu.FavoriteScreen
-import com.olashiku.kmmtemplate.android.screens.menu.MenuScreen
-import com.olashiku.kmmtemplate.android.screens.menu.OrderScreen
-import com.olashiku.kmmtemplate.android.screens.menu.ProfileScreen
-import com.olashiku.kmmtemplate.android.screens.navigation.BottomNavigationScreens
+import com.olashiku.kmmtemplate.android.screens.external.navigation.BottomNavigationScreens
+import com.olashiku.kmmtemplate.android.screens.internal.favorite.FavoriteScreen
+import com.olashiku.kmmtemplate.android.screens.internal.menu.MenuScreen
+import com.olashiku.kmmtemplate.android.screens.internal.order.OrderScreen
+import com.olashiku.kmmtemplate.android.screens.internal.profile.ProfileScreen
 
 @Composable
-fun DashboardScreen(navController: NavHostController, bottomNavController: NavHostController) {
+fun DashboardScreen() {
+
+    val navController = rememberNavController()
 
     val bottomNavigationItems = listOf(
         BottomNavigationScreens.menu,
@@ -41,7 +45,7 @@ fun DashboardScreen(navController: NavHostController, bottomNavController: NavHo
 
     Scaffold(
         bottomBar = {
-            SpookyAppBottomNavigation(navController, bottomNavigationItems)
+            BottomNavigation(navController, bottomNavigationItems)
         },
     ) {
         MainScreenNavigationConfigurations(navController, modifier = Modifier.padding(it))
@@ -50,7 +54,7 @@ fun DashboardScreen(navController: NavHostController, bottomNavController: NavHo
 
 
 @Composable
-private fun SpookyAppBottomNavigation(
+private fun BottomNavigation(
     navController: NavHostController,
     items: List<BottomNavigationScreens>
 ) {
@@ -80,11 +84,11 @@ private fun SpookyAppBottomNavigation(
                 },
                 label = {
                     Text(
-                    text = screen.title,
-                    style = Fonts.Typography.h1,
-                    fontSize = 10.sp,
-                    fontWeight = if(selected) FontWeight.SemiBold else FontWeight.Normal,
-                    color = if(selected) Color(Colors.brownColor) else Color(Colors.rememberMeTextColor)
+                        text = screen.title,
+                        style = Fonts.Typography.h1,
+                        fontSize = 10.sp,
+                        fontWeight = if(selected) FontWeight.SemiBold else FontWeight.Normal,
+                        color = if(selected) Color(Colors.brownColor) else Color(Colors.rememberMeTextColor)
                     ) },
                 selected = selected,
                 alwaysShowLabel = true,
@@ -115,17 +119,22 @@ private fun currentRoute(navController: NavHostController): String? {
 private fun MainScreenNavigationConfigurations(
     navController: NavHostController, modifier: Modifier = Modifier
 ) {
+
     NavHost(navController, startDestination = Strings.menuScreen) {
         composable(Strings.menuScreen) {
+            BackHandler(true){}
             MenuScreen()
         }
         composable(Strings.myOrderScreen) {
+            BackHandler(true){}
             OrderScreen()
         }
         composable(Strings.myFavoriteScreen) {
+            BackHandler(true){}
             FavoriteScreen()
         }
         composable(Strings.myProfileScreen) {
+            BackHandler(true){}
             ProfileScreen()
         }
     }

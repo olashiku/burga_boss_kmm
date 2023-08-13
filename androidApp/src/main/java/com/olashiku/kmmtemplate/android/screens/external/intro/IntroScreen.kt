@@ -1,4 +1,4 @@
-package com.olashiku.kmmtemplate.android.screens.intro
+package com.olashiku.kmmtemplate.android.screens.external.intro
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
@@ -11,13 +11,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,9 +28,9 @@ import com.olashiku.kmmtemplate.android.R
 import com.olashiku.kmmtemplate.android.resource.Colors
 import com.olashiku.kmmtemplate.android.resource.Fonts
 import com.olashiku.kmmtemplate.android.resource.Strings
-import com.olashiku.kmmtemplate.android.screens.reusable.LightButton
-import com.olashiku.kmmtemplate.android.screens.reusable.SolidButton
-import com.olashiku.kmmtemplate.android.screens.reusable.TransparentButton
+import com.olashiku.kmmtemplate.android.screens.external.reusable.LightButton
+import com.olashiku.kmmtemplate.android.screens.external.reusable.SolidButton
+import com.olashiku.kmmtemplate.android.screens.external.reusable.TransparentButton
 import com.olashiku.kmmtemplate.viewModel.UserViewModel
 import org.koin.androidx.compose.koinViewModel
 

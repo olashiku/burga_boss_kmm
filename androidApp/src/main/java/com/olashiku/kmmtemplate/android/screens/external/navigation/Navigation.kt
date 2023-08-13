@@ -1,4 +1,4 @@
-package com.olashiku.kmmtemplate.android.screens.navigation
+package com.olashiku.kmmtemplate.android.screens.external.navigation
 
 import com.olashiku.kmmtemplate.android.R
 import com.olashiku.kmmtemplate.android.resource.Strings

@@ -1,4 +1,4 @@
-package com.olashiku.kmmtemplate.android.screens.success
+package com.olashiku.kmmtemplate.android.screens.external.success
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -23,7 +23,7 @@ import com.olashiku.kmmtemplate.android.R
 import com.olashiku.kmmtemplate.android.resource.Colors
 import com.olashiku.kmmtemplate.android.resource.Fonts
 import com.olashiku.kmmtemplate.android.resource.Strings
-import com.olashiku.kmmtemplate.android.screens.reusable.SolidButton
+import com.olashiku.kmmtemplate.android.screens.external.reusable.SolidButton
 
 @Composable
 fun SuccessScreen(navController: NavController, modifier: Modifier = Modifier) {
