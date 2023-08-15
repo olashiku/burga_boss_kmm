@@ -9,7 +9,7 @@ object Strings {
     const val signInWithGoogle = "Sign in with Google"
     const val emailOrPhoneText = "Enter your email or phone number"
     const val passwordText = "Enter your password"
-    const val rememberMeText ="Rememeber me"
+    const val rememberMeText ="Remember me"
     const val getStarted = "Get Started"
     const val signupText = "Sign Up"
     const val orText = "OR"
@@ -17,7 +17,8 @@ object Strings {
     const val forgotPassword = "Forgot Password?"
     const val noAccountTextOne = "Don’t have an account?"
     const val haveAccountLogin = "Already have an account?"
-
+    const val noOrders = "No order available"
+    const val noFavorite = "You have nothing in My favourites"
     const val noAccountTextTwo = " Sign Up"
 
     const val outsideRoot = "outsideRoot"
@@ -55,12 +56,37 @@ object Strings {
     const val myFavoriteScreen = "MyFavoriteScreen"
     const val myProfileScreen = "MyProfileScreen"
 
+    /**customer type resource*/
+    const val registeredCustomerType = "registered"
+    const val unRegisteredCustomerType = "unregistered"
+
+
 
     /**menu text resource*/
     const val menu = "Menu"
     const val order = "My Order"
     const val favorite = "My Favorite"
     const val profile = "My Profile"
+
+
+    /**profile unregistered user resource*/
+    const val signUpText = "Sign up"
+    const val loginString = "Login"
+    const val support = "Support"
+
+    /**profile registered user resource*/
+    const val editProfile = "Edit profile"
+    const val paymentMethod = "Payment method"
+    const val savedAddress = "Saved Address"
+    const val notification = "Notification"
+    const val changePassword = "Change password"
+    const val logout = "Logout"
+
+
+
+
+
+
 
 
 }

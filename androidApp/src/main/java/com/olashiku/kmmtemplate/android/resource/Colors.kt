@@ -5,6 +5,8 @@ object Colors {
     const val brownColor = 0xFF7E3C26
     const val lightBrownColor = 0x0A7E3C26
     const val whiteColor = 0xFFFCFCFD
+    const val creamColor = 0xFFFAEEDF
+    const val lightCreamColor = 0xFFFFFDFB
     const val grayLineColor = 0xFFD0D5DD
     const val grayOtpColor = 0xFFF9FAFB
     const val grayTextColor = 0xFF344054
@@ -16,4 +18,6 @@ object Colors {
     const val verificationTextColor = 0xFF475467
     const val menuTopTextColor = 0xFF757575
     const val tabBackgroundColor = 0xFFFDF6ED
+    const val noorderColor = 0xFF101828
+    const val logoutColor = 0xFFD92D20
 }

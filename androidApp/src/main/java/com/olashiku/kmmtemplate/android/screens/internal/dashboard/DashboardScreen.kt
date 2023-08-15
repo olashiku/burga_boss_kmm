@@ -26,6 +26,7 @@ import com.olashiku.kmmtemplate.android.resource.Colors
 import com.olashiku.kmmtemplate.android.resource.Fonts
 import com.olashiku.kmmtemplate.android.resource.Strings
 import com.olashiku.kmmtemplate.android.screens.external.navigation.BottomNavigationScreens
+import com.olashiku.kmmtemplate.android.screens.external.reusable.StatusBarColor
 import com.olashiku.kmmtemplate.android.screens.internal.favorite.FavoriteScreen
 import com.olashiku.kmmtemplate.android.screens.internal.menu.MenuScreen
 import com.olashiku.kmmtemplate.android.screens.internal.order.OrderScreen
@@ -58,8 +59,9 @@ private fun BottomNavigation(
     navController: NavHostController,
     items: List<BottomNavigationScreens>
 ) {
-    BottomNavigation(  backgroundColor = Color(Colors.whiteColor),
-    ){
+    BottomNavigation(
+        backgroundColor = Color(Colors.whiteColor),
+    ) {
 
         val currentRoute = currentRoute(navController)
         val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -76,10 +78,10 @@ private fun BottomNavigation(
             BottomNavigationItem(
                 icon = {
                     Icon(
-                        modifier=Modifier.padding(3.dp),
+                        modifier = Modifier.padding(3.dp),
                         painter = painterResource(id = drawableResource),
                         contentDescription = "",
-                        tint = if (selected) Color(Colors.brownColor)  else Color(Colors.rememberMeTextColor)
+                        tint = if (selected) Color(Colors.brownColor) else Color(Colors.rememberMeTextColor)
                     )
                 },
                 label = {
@@ -87,9 +89,10 @@ private fun BottomNavigation(
                         text = screen.title,
                         style = Fonts.Typography.h1,
                         fontSize = 10.sp,
-                        fontWeight = if(selected) FontWeight.SemiBold else FontWeight.Normal,
-                        color = if(selected) Color(Colors.brownColor) else Color(Colors.rememberMeTextColor)
-                    ) },
+                        fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
+                        color = if (selected) Color(Colors.brownColor) else Color(Colors.rememberMeTextColor)
+                    )
+                },
                 selected = selected,
                 alwaysShowLabel = true,
                 onClick = {
@@ -122,19 +125,23 @@ private fun MainScreenNavigationConfigurations(
 
     NavHost(navController, startDestination = Strings.menuScreen) {
         composable(Strings.menuScreen) {
-            BackHandler(true){}
+            BackHandler(true) {}
+            StatusBarColor(color = Color(Colors.whiteColor))
             MenuScreen()
         }
         composable(Strings.myOrderScreen) {
-            BackHandler(true){}
+            BackHandler(true) {}
+            StatusBarColor(color = Color(Colors.whiteColor))
             OrderScreen()
         }
         composable(Strings.myFavoriteScreen) {
-            BackHandler(true){}
+            BackHandler(true) {}
+            StatusBarColor(color = Color(Colors.whiteColor))
             FavoriteScreen()
         }
         composable(Strings.myProfileScreen) {
-            BackHandler(true){}
+            BackHandler(true) {}
+            StatusBarColor(color = Color(Colors.creamColor))
             ProfileScreen()
         }
     }
