@@ -21,7 +21,7 @@ open class BaseViewModel( val savedStateHandle: SavedStateHandle) : ViewModel() 
     private val loader = savedStateHandle.getStateFlow("isLoading", false)
     private val error = savedStateHandle.getStateFlow("errorMessage", "")
 
-    fun <T:Any>registerActiveState(response: StateFlow<T>): StateFlow<State> {
+    fun <T:Any>registerActiveState( response: StateFlow<T>): StateFlow<State> {
        return   combine(response, error, loader) { response, error, loader ->
             State(
                 response = response,
@@ -30,6 +30,7 @@ open class BaseViewModel( val savedStateHandle: SavedStateHandle) : ViewModel() 
             )
         }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), State())
     }
+
 
     fun <R : Any, T : Any> makePostRequest(
         request: R,

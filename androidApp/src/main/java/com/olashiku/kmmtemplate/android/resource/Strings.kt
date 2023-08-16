@@ -83,7 +83,13 @@ object Strings {
     const val logout = "Logout"
 
 
+    const val burger = "Burger"
+    const val fries = "Fries"
+    const val drinks = "Drinks"
 
+    fun getTabCategory():List<String>{
+        return listOf("Burger", "Fries", "Drinks")
+    }
 
 
 

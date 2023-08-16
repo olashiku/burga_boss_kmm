@@ -22,6 +22,7 @@ import androidx.compose.material.TabPosition
 import androidx.compose.material.TabRow
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -39,6 +40,7 @@ import androidx.compose.ui.unit.sp
 import com.olashiku.kmmtemplate.android.R
 import com.olashiku.kmmtemplate.android.resource.Colors
 import com.olashiku.kmmtemplate.android.resource.Fonts
+import com.olashiku.kmmtemplate.android.resource.Strings
 import com.olashiku.kmmtemplate.android.screens.external.reusable.TransparentButtonWithIcon
 import com.olashiku.kmmtemplate.model.ProductDetails
 import com.olashiku.kmmtemplate.viewModel.UserViewModel
@@ -47,6 +49,8 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MenuScreen(modifier: Modifier = Modifier, viewModel: UserViewModel = koinViewModel()) {
+    val burgaData = viewModel.burgerData.collectAsState()
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -58,8 +62,8 @@ fun MenuScreen(modifier: Modifier = Modifier, viewModel: UserViewModel = koinVie
             TitleBar()
             AdvertSection()
             Spacer(modifier = modifier.height(39.dp))
-            TabSection()
-            DataSection(viewModel.getProducts())
+            TabSection(viewModel)
+            DataSection(burgaData.value)
         }
     }
 
@@ -111,10 +115,10 @@ fun AdvertSection(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun TabSection() {
+fun TabSection(viewModel: UserViewModel) {
     var selectedIndex by remember { mutableStateOf(0) }
 
-    val list = listOf("Burger", "Fries", "Drinks")
+    val list = Strings.getTabCategory()
 
     TabRow(selectedTabIndex = selectedIndex,
         backgroundColor = Color(Colors.tabBackgroundColor),
@@ -142,7 +146,21 @@ fun TabSection() {
                         )
                     ),
                 selected = selected,
-                onClick = { selectedIndex = index },
+                onClick = {
+                    selectedIndex = index
+                    when (selectedIndex) {
+                        0 -> {
+                            viewModel.getProductByCategory(Strings.burger)
+                        }
+                        1 -> {
+                            viewModel.getProductByCategory(Strings.fries)
+                        }
+                        2 -> {
+                            viewModel.getProductByCategory(Strings.drinks)
+                        }
+                    }
+
+                },
                 text = {
                     Text(
                         text = text,
@@ -156,6 +174,12 @@ fun TabSection() {
     }
 }
 
+
+@Composable
+private fun getTabData() {
+
+
+}
 
 @Composable
 fun DataSection(products: List<ProductDetails>, modifier: Modifier = Modifier) {
@@ -172,11 +196,12 @@ fun ProductTile(
     product: ProductDetails = ProductDetails()
 ) {
     val modifier: Modifier = Modifier
-    Card(modifier = modifier
-        .padding(10.dp)
-        .height(200.dp)
-        .width(150.dp)
-        .clickable { },
+    Card(
+        modifier = modifier
+            .padding(10.dp)
+            .height(200.dp)
+            .width(150.dp)
+            .clickable { },
         shape = RoundedCornerShape(8.dp),
         border = BorderStroke(1.dp, Color(Colors.lineColor)),
         backgroundColor = Color.White

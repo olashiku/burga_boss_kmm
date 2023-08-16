@@ -78,8 +78,8 @@ fun CreateTopSection(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun BottomSection(navController: NavController, modifier: Modifier = Modifier,userViewModel: UserViewModel = koinViewModel()) {
-
+fun BottomSection(navController: NavController, modifier: Modifier = Modifier) {
+// ,userViewModel: UserViewModel = koinViewModel()
     Column(modifier.padding(20.dp, 30.dp, 20.dp, 0.dp)) {
         SolidButton(text = Strings.loginText, action = {
             navController.navigate(Strings.loginScreen)

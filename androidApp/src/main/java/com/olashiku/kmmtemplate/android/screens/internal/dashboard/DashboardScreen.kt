@@ -70,10 +70,7 @@ private fun BottomNavigation(
         items.forEach { screen ->
 
             val selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
-
-            val drawableResource = if (
-                selected) screen.selectedIcon
-            else screen.unselectedIcon
+            val drawableResource = if (selected) screen.selectedIcon else screen.unselectedIcon
 
             BottomNavigationItem(
                 icon = {
