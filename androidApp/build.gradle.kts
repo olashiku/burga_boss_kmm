@@ -7,14 +7,6 @@ plugins {
     id("app.cash.sqldelight") version "2.0.0-alpha05"
 }
 
-sqldelight{
-    databases{
-        create("Database"){
-            packageName.set("com.olashiku")
-        }
-    }
-}
-
 
 android {
     namespace = "com.olashiku.kmmtemplate.android"

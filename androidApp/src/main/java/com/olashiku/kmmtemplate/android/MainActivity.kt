@@ -3,6 +3,7 @@ package com.olashiku.kmmtemplate.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
@@ -20,6 +21,7 @@ import com.olashiku.kmmtemplate.android.screens.external.reusable.StatusBarColor
 import com.olashiku.kmmtemplate.android.screens.external.signup.SignupScreen
 import com.olashiku.kmmtemplate.android.screens.external.splash.SplashScreen
 import com.olashiku.kmmtemplate.android.screens.external.success.SuccessScreen
+import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
 
@@ -38,7 +40,6 @@ class MainActivity : ComponentActivity() {
                     this.outsideNavGraph(navController = navController)
                     this.insideNavGraph()
                 }
-
             }
         }
     }

@@ -93,3 +93,10 @@ android {
         targetSdk = 33
     }
 }
+
+sqldelight{
+    database("BurgaBossDatabase"){
+        packageName = "com.olashiku.kmmtemplate.shared.cache"
+    }
+}
+

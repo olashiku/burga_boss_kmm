@@ -43,12 +43,13 @@ import com.olashiku.kmmtemplate.android.resource.Fonts
 import com.olashiku.kmmtemplate.android.resource.Strings
 import com.olashiku.kmmtemplate.android.screens.external.reusable.TransparentButtonWithIcon
 import com.olashiku.kmmtemplate.model.ProductDetails
-import com.olashiku.kmmtemplate.viewModel.UserViewModel
+import com.olashiku.kmmtemplate.model.response.products.Details
+import com.olashiku.kmmtemplate.viewModel.ProductsViewModel
 import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun MenuScreen(modifier: Modifier = Modifier, viewModel: UserViewModel = koinViewModel()) {
+fun MenuScreen(modifier: Modifier = Modifier, viewModel: ProductsViewModel = koinViewModel()) {
     val burgaData = viewModel.burgerData.collectAsState()
 
     Column(
@@ -115,7 +116,7 @@ fun AdvertSection(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun TabSection(viewModel: UserViewModel) {
+fun TabSection(viewModel: ProductsViewModel) {
     var selectedIndex by remember { mutableStateOf(0) }
 
     val list = Strings.getTabCategory()
@@ -182,7 +183,7 @@ private fun getTabData() {
 }
 
 @Composable
-fun DataSection(products: List<ProductDetails>, modifier: Modifier = Modifier) {
+fun DataSection(products: List<Details>, modifier: Modifier = Modifier) {
     LazyVerticalGrid(columns = GridCells.Fixed(2), modifier = modifier.padding(top = 20.dp)) {
         items(products.size) { index ->
             ProductTile(products[index])
@@ -192,9 +193,7 @@ fun DataSection(products: List<ProductDetails>, modifier: Modifier = Modifier) {
 
 
 @Composable
-fun ProductTile(
-    product: ProductDetails = ProductDetails()
-) {
+fun ProductTile(product: Details) {
     val modifier: Modifier = Modifier
     Card(
         modifier = modifier
@@ -221,7 +220,7 @@ fun ProductTile(
             Row(modifier = modifier.padding(start = 7.dp, end = 7.dp, top = 14.dp)) {
                 Column {
                     Text(
-                        text = product.productName,
+                        text = product.name,
                         fontSize = 10.sp,
                         style = Fonts.Typography.body1,
                         color = Color(Colors.blackTextColor)
@@ -251,7 +250,6 @@ fun ProductTile(
 @Preview()
 @Composable
 fun Preview() {
-    ProductTile()
 }
 
 

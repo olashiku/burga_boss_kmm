@@ -13,15 +13,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.olashiku.kmmtemplate.android.R
 import com.olashiku.kmmtemplate.utils.Utils
+import com.olashiku.kmmtemplate.viewModel.ProductsViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun SplashScreen(navController: NavController) {
+fun SplashScreen(navController: NavController,  viewModel: ProductsViewModel = koinViewModel()) {
     ShowLogo()
-
     Utils.WaitFor(3000) {
         navController.navigate("IntroScreen")
     }
-
 }
 
  @Composable

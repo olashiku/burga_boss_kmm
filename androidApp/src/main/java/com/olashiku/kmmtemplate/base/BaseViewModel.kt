@@ -85,28 +85,22 @@ open class BaseViewModel( val savedStateHandle: SavedStateHandle) : ViewModel() 
 
 
     fun <T : Any> makeGetRequest(
-        apiCall: suspend () -> NetworkResult<T>,
-        getError: (response: T) -> Unit,
-        response:(T)->Unit,
-        getException:(String)->Unit,
-        isLoading: (Boolean) -> Unit
-
-    ) {
-        runBlocking {
+        apiCall: suspend () -> NetworkResult<T>) {
+        viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
-                isLoading(true)
+                savedStateHandle["isLoading"] = true
                 apiCall()
             }
-            isLoading(false)
+            savedStateHandle["isLoading"] = false
             when (result) {
                 is NetworkResult.Success<*> -> {
-                    response(result.data as T)
+                    savedStateHandle["response"] = result.data.toJson()
                 }
                 is NetworkResult.Errror -> {
-                    getException(result.exception.message.toString())
+                    savedStateHandle["errorMessage"] = result.exception.message.toString()
                 }
                 is NetworkResult.Failed<*> -> {
-                    getError(result.message as T)
+                    savedStateHandle["errorMessage"] = result.message
                 }
                 else -> {}
             }

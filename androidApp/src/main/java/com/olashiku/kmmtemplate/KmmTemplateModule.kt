@@ -15,7 +15,7 @@ class KmmTemplateModule :Application(){
       fun startKoinModule(){
           startKoin {
               androidContext(this@KmmTemplateModule)
-              modules(appModule() + androidModule)
+              modules( appModule() + androidModule)
           }
 
      }
