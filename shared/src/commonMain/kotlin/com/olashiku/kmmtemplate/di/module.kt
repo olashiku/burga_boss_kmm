@@ -4,4 +4,4 @@ import org.koin.core.module.Module
 
 
 expect fun platformModule(): Module
-fun appModule() = listOf(networkModule, repositoryModule, storageModule,platformModule())
+fun appModule() = listOf(networkModule, repositoryModule, dataSourceModule,platformModule())

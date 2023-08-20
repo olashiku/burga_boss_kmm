@@ -1,6 +1,6 @@
 package com.olashiku.kmmtemplate.di
 
-import com.olashiku.kmmtemplate.model.response.products.ProductsRepositoryImpl
+import com.olashiku.kmmtemplate.repository.products.ProductsRepositoryImpl
 import com.olashiku.kmmtemplate.repository.auth.AuthRepositoryImplementation
 import com.olashiku.kmmtemplate.repository.auth.AuthenticationRepository
 import com.olashiku.kmmtemplate.repository.products.ProductsRepository
@@ -11,5 +11,5 @@ import org.koin.dsl.module
 val repositoryModule = module {
     single <AuthenticationRepository> { AuthRepositoryImplementation() }
     single <UserRepository>{ UserRepositoryImplementation() }
-    single <ProductsRepository>{ProductsRepositoryImpl()  }
+    single <ProductsRepository>{ ProductsRepositoryImpl(get())  }
 }

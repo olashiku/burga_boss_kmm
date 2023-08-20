@@ -80,7 +80,7 @@ open class BaseNetworkRepository: KoinComponent {
         }
     }
 
-    suspend inline fun < reified T:Any> runGetRequestWithData( endpoint:String, checkIfSuccessful:(T)->Boolean,data:(T)->Unit): NetworkResult<T>{
+    suspend inline fun < reified T:Any> runGetRequestWithData( endpoint:String, checkIfSuccessful:(T)->Boolean,  data:(T)->Unit): NetworkResult<T>{
         return  try {
             val response: HttpResponse = networkProvider.client.get {
                 url {

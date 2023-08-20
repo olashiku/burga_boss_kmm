@@ -151,13 +151,13 @@ fun TabSection(viewModel: ProductsViewModel) {
                     selectedIndex = index
                     when (selectedIndex) {
                         0 -> {
-                            viewModel.getProductByCategory(Strings.burger)
+                            viewModel.getProducts(Strings.burger)
                         }
                         1 -> {
-                            viewModel.getProductByCategory(Strings.fries)
+                            viewModel.getProducts(Strings.fries)
                         }
                         2 -> {
-                            viewModel.getProductByCategory(Strings.drinks)
+                            viewModel.getProducts(Strings.drinks)
                         }
                     }
 
@@ -227,7 +227,7 @@ fun ProductTile(product: Details) {
                     )
 
                     Text(
-                        text = product.amount,
+                        text = product.amount.toString(),
                         fontSize = 10.sp,
                         style = Fonts.Typography.body1,
                         color = Color(Colors.blackTextColor)

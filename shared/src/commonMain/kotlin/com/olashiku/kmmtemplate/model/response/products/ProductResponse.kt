@@ -1,5 +1,6 @@
 package com.olashiku.kmmtemplate.model.response.products
 
+import database.Products
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -11,10 +12,26 @@ data class ProductResponse(
 
 @Serializable
 data class Details(
-    val id: Int,
+    val id: Long,
     val category: String,
-    val name:String,
-    val description:String,
-    val amount:String,
-    val ingredient:List<String>
+    val name: String,
+    val description: String,
+    val amount: Double,
+    val ingredient: List<String>
 )
+
+data class Product(
+    val category: String,
+    val name: String,
+    val description: String,
+    val amount: Double
+)
+
+fun Products.toProducts(): Product {
+    return Product(
+        category = this.category,
+        name = this.name,
+        description = this.description,
+        amount = this.amount
+    )
+}

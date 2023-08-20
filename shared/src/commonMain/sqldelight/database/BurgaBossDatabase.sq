@@ -4,7 +4,7 @@ product_id INTEGER NOT NULL,
 category TEXT NOT NULL,
 name TEXT NOT NULL,
 description TEXT NOT NULL,
-amount INTEGER NOT NULL
+amount REAL NOT NULL
 );
 
 getAllProducts:
@@ -13,6 +13,10 @@ SELECT * FROM products;
 deleteProducts:
 DELETE FROM products;
 
-insertProducts:
+insertProduct:
 INSERT INTO products (product_id,category,name,description,amount)
  VALUES(?,?,?,?,?);
+
+insertProducts:
+INSERT INTO products (product_id,category,name,description,amount)
+VALUES ?;
