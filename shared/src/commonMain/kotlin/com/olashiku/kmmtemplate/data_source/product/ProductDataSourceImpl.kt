@@ -5,6 +5,7 @@ import com.olashiku.kmmtemplate.model.response.products.Product
 import com.olashiku.kmmtemplate.model.response.products.toProducts
 import com.olashiku.kmmtemplate.shared.cache.BurgaBossDatabase
 import com.olashiku.kmmtemplate.storage_engine.DatabaseDriverFactory
+import kotlinx.coroutines.flow.Flow
 
 class ProductDataSourceImpl(databaseDriverFactory: DatabaseDriverFactory) : ProductDataSource {
 
@@ -24,7 +25,8 @@ class ProductDataSourceImpl(databaseDriverFactory: DatabaseDriverFactory) : Prod
                     it.category,
                     it.name,
                     it.description,
-                   it.amount
+                   it.amount,
+                    it.image
                 )
             }
         }

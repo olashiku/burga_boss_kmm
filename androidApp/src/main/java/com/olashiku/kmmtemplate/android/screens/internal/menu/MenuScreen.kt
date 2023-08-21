@@ -37,13 +37,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberAsyncImagePainter
 import com.olashiku.kmmtemplate.android.R
 import com.olashiku.kmmtemplate.android.resource.Colors
 import com.olashiku.kmmtemplate.android.resource.Fonts
 import com.olashiku.kmmtemplate.android.resource.Strings
 import com.olashiku.kmmtemplate.android.screens.external.reusable.TransparentButtonWithIcon
-import com.olashiku.kmmtemplate.model.ProductDetails
 import com.olashiku.kmmtemplate.model.response.products.Details
+import com.olashiku.kmmtemplate.model.response.products.Product
 import com.olashiku.kmmtemplate.viewModel.ProductsViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -183,7 +184,7 @@ private fun getTabData() {
 }
 
 @Composable
-fun DataSection(products: List<Details>, modifier: Modifier = Modifier) {
+fun DataSection(products: List<Product>, modifier: Modifier = Modifier) {
     LazyVerticalGrid(columns = GridCells.Fixed(2), modifier = modifier.padding(top = 20.dp)) {
         items(products.size) { index ->
             ProductTile(products[index])
@@ -193,7 +194,7 @@ fun DataSection(products: List<Details>, modifier: Modifier = Modifier) {
 
 
 @Composable
-fun ProductTile(product: Details) {
+fun ProductTile(product: Product) {
     val modifier: Modifier = Modifier
     Card(
         modifier = modifier
@@ -208,7 +209,7 @@ fun ProductTile(product: Details) {
 
         Column {
             Image(
-                painter = painterResource(id = R.drawable.burger_image),
+                painter = rememberAsyncImagePainter(product.image),
                 contentDescription = "product image",
                 modifier = modifier
                     .padding(start = 7.dp, end = 7.dp)

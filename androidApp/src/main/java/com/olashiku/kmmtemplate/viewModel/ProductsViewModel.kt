@@ -12,6 +12,7 @@ import com.olashiku.kmmtemplate.model.response.register.RegisterResponse
 import com.olashiku.kmmtemplate.repository.products.ProductsRepository
 import com.olashiku.kmmtemplate.utils.fromJson
 import com.olashiku.kmmtemplate.utils.toJson
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
@@ -20,23 +21,23 @@ class ProductsViewModel(
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel(savedStateHandle) {
 
-    val burgerData = MutableStateFlow(listOf<Details>())
+    val burgerData = MutableStateFlow(listOf<Product>())
 
     private val registerResponse =
         savedStateHandle.getStateFlow("productResponse", ProductResponse.toJson())
     val productState = registerActiveState(registerResponse)
 
-
     init {
         makeGetRequest(productsRepository::getProducts)
+        getProducts(Strings.burger)
     }
 
-    fun getProducts(category: String) {
+    fun getProducts(category: String){
         viewModelScope.launch {
         val result = productsRepository.getSavedProduct().filter {
                 it.category.equals(category, ignoreCase = true)
             }
-            println(result)
+            burgerData.value = result
         }
     }
 

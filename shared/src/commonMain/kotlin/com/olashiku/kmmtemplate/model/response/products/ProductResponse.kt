@@ -17,14 +17,16 @@ data class Details(
     val name: String,
     val description: String,
     val amount: Double,
-    val ingredient: List<String>
+    val ingredient: List<String>,
+    val image:String
 )
 
 data class Product(
     val category: String,
     val name: String,
     val description: String,
-    val amount: Double
+    val amount: Double,
+    val image: String
 )
 
 fun Products.toProducts(): Product {
@@ -32,6 +34,7 @@ fun Products.toProducts(): Product {
         category = this.category,
         name = this.name,
         description = this.description,
-        amount = this.amount
+        amount = this.amount,
+        image = this.image
     )
 }

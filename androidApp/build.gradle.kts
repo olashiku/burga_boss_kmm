@@ -65,5 +65,6 @@ dependencies {
     implementation ("androidx.compose.material:material-icons-extended:1.4.3")
     implementation ("com.yogeshpaliyal:speld:1.0.0")
     implementation ("com.google.accompanist:accompanist-systemuicontroller:0.30.1")
+    implementation("io.coil-kt:coil-compose:2.0.0-rc01")
 
 }
